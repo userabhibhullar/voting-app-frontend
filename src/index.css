@@ -1,13 +1,20 @@
-h1 {
+* {
   margin: 0;
+  padding: 0;
 }
-p {
-  display: inline-block;
-  margin: 0;
-  margin-left: 4px;
-  margin-right: 4px;
+:root {
+  --primary: rgb(230, 46, 110);
+  --secondary: rgb(50, 50, 255);
+  --background: rgb(255, 255, 255);
+  --text: rgb(0, 0, 0);
+  --text-secondary: rgb(92, 92, 92);
+  --ff: "Roboto", sans-serif;
 }
+
+body {
+  font-family: var(--ff);
+}
+
 a {
-  margin-left: 4px;
-  margin-right: 4px;
+  text-decoration: none;
 }

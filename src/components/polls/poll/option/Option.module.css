@@ -1,0 +1,27 @@
+.option {
+  margin-bottom: 8px;
+}
+
+.optionInput {
+  display: none;
+}
+
+.optionLabel {
+  display: block;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.optionLabelSelected {
+  display: block;
+  background-color: var(--primary);
+  color: var(--background);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-weight: 500;
+  font-size: 16px;
+}

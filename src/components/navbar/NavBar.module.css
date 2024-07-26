@@ -1,0 +1,45 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 58px;
+
+  display: flex;
+  justify-content: center;
+
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
+
+  background-color: var(--background);
+}
+
+.navbarContainer {
+  max-width: 1100px;
+  width: 100%;
+
+  padding: 0px 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbarTitle {
+  font-weight: 600;
+  font-size: 24px;
+
+  color: var(--primary);
+}
+
+.navbarStatus {
+  color: var(--text-secondary);
+}
+
+.navbarUser {
+  color: var(--secondary);
+  font-weight: 500;
+}
+
+.navbarAuth button {
+  margin-right: 8px;
+}

@@ -1,8 +1,10 @@
-import Poll from "./Poll";
+import Poll from "../poll/Poll";
+import styles from "./PollsContainer.module.css";
 
 const PollsContainer = () => {
   return (
-    <div>
+    <div className={styles.pollsContainer}>
+      <Poll />
       <Poll />
       <Poll />
       <Poll />

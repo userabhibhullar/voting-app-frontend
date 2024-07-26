@@ -1,0 +1,12 @@
+.pollsContainer {
+  max-width: 800px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 8px;
+  padding-left: 18px;
+  padding-right: 18px;
+
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  padding-top: 50px;
+}
