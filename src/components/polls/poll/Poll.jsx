@@ -1,7 +1,9 @@
 import { useState } from "react";
 import Option from "./option/Option";
 import styles from "./Poll.module.css";
-const Poll = () => {
+import moment from "moment";
+
+const Poll = ({ poll }) => {
   const [selected, setSelected] = useState("");
 
   const handleSelect = (e) => {
@@ -11,23 +13,18 @@ const Poll = () => {
   return (
     <div className={styles.pollContainer}>
       <span className={styles.pollAuthor}>
-        Abhi Bhullar &middot;{" "}
-        <span className={styles.pollDate}>2 days ago</span>
+        {poll.author || "Anonymous"} &middot;
+        <span className={styles.pollDate}>
+          {moment(poll.date).fromNow() || "...."}
+        </span>
       </span>
-      <span className={styles.pollTitle}>Poll Title</span>
-      <p className={styles.pollBody}>Poll Description</p>
-      <Option
-        onChange={handleSelect}
-        id="fav_language"
-        value="Javascript"
-        selected={selected === "Javascript"}
-      />
-      <Option
-        onChange={handleSelect}
-        id="fav_language"
-        value="Python"
-        selected={selected === "Python"}
-      />
+      <span className={styles.pollTitle}>{poll.title}</span>
+      {poll.body && <p className={styles.pollBody}>{poll.body}</p>}
+      {poll.options &&
+        poll.options.map((option) => {
+          console.log(option);
+          return <Option id={poll._id} value={option} />;
+        })}
     </div>
   );
 };

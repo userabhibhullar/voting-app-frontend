@@ -1,4 +1,4 @@
-import PollsContainer from "./pollContainer/PollsContainer";
+import PollsContainer from "./pollsContainer/PollsContainer";
 import styles from "./Polls.module.css";
 
 const Polls = () => {
