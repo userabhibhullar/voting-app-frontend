@@ -7,6 +7,10 @@ const NavBar = () => {
         <Link to={"/login"}>Login</Link>
         <Link to={"/register"}>Register</Link>
       </div>
+      <div>
+        <p>Logged in as Abhi Bhullar</p>
+        <button>Logout</button>
+      </div>
     </header>
   );
 };
