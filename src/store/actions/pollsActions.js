@@ -32,3 +32,19 @@ export const createPoll = (poll) => {
       });
   };
 };
+
+export const updatePoll = (poll, id) => {
+  return (dispatch) => {
+    axios
+      .put(`${url}/polls/${id}`, poll)
+      .then((poll) => {
+        dispatch({
+          type: "UPDATE_POLL",
+          poll,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};

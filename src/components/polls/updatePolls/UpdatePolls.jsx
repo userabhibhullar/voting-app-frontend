@@ -1,19 +1,30 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Button from "../button/Button";
-import styles from "./CreatePolls.module.css";
+import { useEffect, useState } from "react";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
+import Button from "../../button/Button";
+import styles from "./UpdatePolls.module.css";
 import { useDispatch } from "react-redux";
-import { createPoll } from "../../store/actions/pollsActions";
+import { createPoll, updatePoll } from "../../../store/actions/pollsActions";
 
-const CreatePolls = () => {
+const UpdatePolls = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { id } = useParams();
+  const { state } = useLocation();
   const [options, setOptions] = useState(["", ""]);
   const [poll, setPoll] = useState({
     title: "",
     body: "",
     options: options,
   });
+
+  useEffect(() => {
+    setOptions(state.options);
+    setPoll({
+      title: state.title,
+      body: state.body || "",
+      options: state.options,
+    });
+  }, [state]);
 
   const addOptionField = (e) => {
     e.preventDefault();
@@ -40,8 +51,8 @@ const CreatePolls = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPoll(poll));
-    return navigate("/");
+    dispatch(updatePoll(poll, id));
+    navigate("/");
   };
   return (
     <div className={styles.createContainer}>
@@ -96,7 +107,7 @@ const CreatePolls = () => {
         </div>
         <div>
           <Button onClick={handleSubmit} variant="primary">
-            Create
+            Update
           </Button>
         </div>
       </form>
@@ -104,4 +115,4 @@ const CreatePolls = () => {
   );
 };
 
-export default CreatePolls;
+export default UpdatePolls;

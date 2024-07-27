@@ -2,8 +2,9 @@ import { useState } from "react";
 import Option from "./option/Option";
 import styles from "./Poll.module.css";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
-const Poll = ({ poll }) => {
+const Poll = ({ poll, admin }) => {
   const [selected, setSelected] = useState("");
 
   const handleSelect = (e) => {
@@ -18,12 +19,18 @@ const Poll = ({ poll }) => {
           {moment(poll.date).fromNow() || "...."}
         </span>
       </span>
+      {admin ? (
+        <Link to={`/edit/${poll._id}`} state={poll}>
+          Edit
+        </Link>
+      ) : (
+        ""
+      )}
       <span className={styles.pollTitle}>{poll.title}</span>
       {poll.body && <p className={styles.pollBody}>{poll.body}</p>}
       {poll.options &&
         poll.options.map((option) => {
-          console.log(option);
-          return <Option id={poll._id} value={option} />;
+          return <Option key={option} id={poll._id} value={option} />;
         })}
     </div>
   );

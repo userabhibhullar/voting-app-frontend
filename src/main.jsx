@@ -8,7 +8,8 @@ import SignIn from "./components/auth/SignIn";
 import Polls from "./components/polls/Polls";
 import store from "./store/store";
 import { Provider } from "react-redux";
-import CreatePolls from "./components/polls/CreatePolls";
+import CreatePolls from "./components/polls/createPolls/CreatePolls";
+import UpdatePolls from "./components/polls/updatePolls/UpdatePolls";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/create",
         element: <CreatePolls />,
+      },
+      {
+        path: "/edit/:id",
+        element: <UpdatePolls />,
       },
       {
         path: "/login",

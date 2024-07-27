@@ -1,0 +1,58 @@
+.createContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.createForm {
+  padding-top: 60px;
+  padding-left: 24px;
+  padding-right: 24px;
+  max-width: 1100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.createLabel {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+}
+
+.createInput {
+  padding: 8px 12px;
+  border: 1px solid var(--primary);
+  border-radius: 9px;
+  outline: none;
+  font-size: 16px;
+  font-family: var(--ff);
+  margin-bottom: 8px;
+}
+
+.createTextArea {
+  padding: 8px 12px;
+  border: 1px solid var(--primary);
+  border-radius: 9px;
+  margin-bottom: 8px;
+  font-family: var(--ff);
+  height: 200px;
+  font-size: 16px;
+  outline: none;
+  resize: none;
+}
+
+.optionCreator {
+  margin-bottom: 8px;
+}
+
+.optionContainer {
+  margin-bottom: 8px;
+}
+
+.createOptionInput {
+  padding: 12px 14px;
+  border-radius: 9px;
+  margin-right: 4px;
+  border: 1px solid var(--primary);
+}

@@ -16,7 +16,7 @@ const PollsContainer = () => {
     <div className={styles.pollsContainer}>
       {polls &&
         polls.map((poll) => {
-          return <Poll key={poll._id} poll={poll} />;
+          return <Poll key={poll._id} poll={poll} admin={true} />;
         })}
     </div>
   );
