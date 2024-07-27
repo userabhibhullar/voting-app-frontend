@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import Button from "../../button/Button";
 import styles from "./UpdatePolls.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createPoll, updatePoll } from "../../../store/actions/pollsActions";
 
 const UpdatePolls = () => {
   const navigate = useNavigate();
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { id } = useParams();
   const { state } = useLocation();
@@ -18,6 +19,10 @@ const UpdatePolls = () => {
   });
 
   useEffect(() => {
+    if (auth._id !== state.uid) {
+      navigate("/");
+    }
+
     setOptions(state.options);
     setPoll({
       title: state.title,

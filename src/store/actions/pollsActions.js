@@ -4,7 +4,7 @@ import { setHeaders, url } from "../api/index";
 export const getPolls = () => {
   return (dispatch) => {
     axios
-      .get(`${url}/polls`)
+      .get(`${url}/polls`, setHeaders())
       .then((polls) => {
         dispatch({
           type: "GET_POLLS",
@@ -67,6 +67,22 @@ export const deletePoll = (id) => {
         dispatch({
           type: "DELETE_POLL",
           id,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
+export const selectPoll = (id, selection) => {
+  return (dispatch) => {
+    axios
+      .patch(`${url}/polls/${id}`, selection, setHeaders())
+      .then((poll) => {
+        dispatch({
+          type: "SELECT_POLL",
+          poll,
         });
       })
       .catch((error) => {

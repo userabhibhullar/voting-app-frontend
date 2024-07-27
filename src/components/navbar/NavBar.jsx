@@ -25,10 +25,14 @@ const NavBar = () => {
               Logged in as:{" "}
               <span className={styles.navbarUser}>{auth.name || "Guest"}</span>
             </p>
-            <Link to={"/create"}>
-              <Button variant="primary">Create</Button>
-            </Link>
-            <Button onClick={handleLogOut}>Logout</Button>
+            <div>
+              <Link style={{ marginRight: "9px" }} to={"/create"}>
+                <Button variant="primary">Create</Button>
+              </Link>
+              <Button variant="secondary" onClick={handleLogOut}>
+                Logout
+              </Button>
+            </div>
           </>
         ) : (
           <>
