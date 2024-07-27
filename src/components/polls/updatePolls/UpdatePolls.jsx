@@ -56,7 +56,7 @@ const UpdatePolls = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updatePoll(poll, id));
+    dispatch(updatePoll({ ...poll, body: poll.body || null }, id));
     navigate("/");
   };
   return (

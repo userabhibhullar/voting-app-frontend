@@ -46,7 +46,7 @@ export const createPoll = (newPoll) => {
 export const updatePoll = (poll, id) => {
   return (dispatch) => {
     axios
-      .put(`${url}/polls/${id}`, poll)
+      .put(`${url}/polls/${id}`, poll, setHeaders())
       .then((poll) => {
         dispatch({
           type: "UPDATE_POLL",

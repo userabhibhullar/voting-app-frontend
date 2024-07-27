@@ -10,7 +10,7 @@ const NavBar = () => {
 
   const handleLogOut = () => {
     dispatch(signOut());
-    navigate("/");
+    navigate("/", { replace: true });
   };
 
   return (
