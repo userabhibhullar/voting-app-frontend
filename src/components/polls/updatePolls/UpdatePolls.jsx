@@ -6,8 +6,8 @@ import { useDispatch } from "react-redux";
 import { createPoll, updatePoll } from "../../../store/actions/pollsActions";
 
 const UpdatePolls = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { id } = useParams();
   const { state } = useLocation();
   const [options, setOptions] = useState(["", ""]);

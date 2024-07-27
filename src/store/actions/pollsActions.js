@@ -1,5 +1,5 @@
 import axios from "axios";
-import { url } from "../api/index";
+import { setHeaders, url } from "../api/index";
 
 export const getPolls = () => {
   return (dispatch) => {
@@ -17,10 +17,20 @@ export const getPolls = () => {
   };
 };
 
-export const createPoll = (poll) => {
-  return (dispatch) => {
+export const createPoll = (newPoll) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth._id;
+    const author = getState().auth.name;
     axios
-      .post(`${url}/polls`, poll)
+      .post(
+        `${url}/polls`,
+        {
+          ...newPoll,
+          uid: uid,
+          author: author,
+        },
+        setHeaders()
+      )
       .then((poll) => {
         dispatch({
           type: "CREATE_POLL",

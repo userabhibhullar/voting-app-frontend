@@ -1,0 +1,32 @@
+.formContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.inputForm {
+  padding-top: 60px;
+  padding-left: 24px;
+  padding-right: 24px;
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  width: 100%;
+}
+
+.valueInput {
+  padding: 12px 8px;
+  border: 1px solid var(--primary);
+  border-radius: 9px;
+  background-color: white !important;
+  margin-bottom: 8px;
+  outline: none;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active,
+input:-webkit-autofill:focus {
+  background-color: #ffffff !important;
+  color: #555 !important;
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: #555555 !important;
+}

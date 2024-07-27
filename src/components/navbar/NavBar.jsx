@@ -1,25 +1,47 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../button/Button";
 import styles from "./NavBar.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { signOut } from "../../store/actions/authActions";
 const NavBar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const auth = useSelector((state) => state.auth);
+
+  const handleLogOut = () => {
+    dispatch(signOut());
+    navigate("/");
+  };
+
   return (
     <header className={styles.navbar}>
       <div className={styles.navbarContainer}>
         <Link to={"/"}>
           <span className={styles.navbarTitle}>Voting App</span>
         </Link>
-        <p className={styles.navbarStatus}>
-          Logged in as: <span className={styles.navbarUser}>Abhi Bhullar</span>
-        </p>
-        <Button>Logout</Button>
-        <div className={styles.navbarAuth}>
-          <Link to={"/login"}>
-            <Button variant="primary">Login</Button>
-          </Link>
-          <Link to={"/register"}>
-            <Button variant="secondary">Register</Button>
-          </Link>
-        </div>
+        {auth._id ? (
+          <>
+            <p className={styles.navbarStatus}>
+              Logged in as:{" "}
+              <span className={styles.navbarUser}>{auth.name || "Guest"}</span>
+            </p>
+            <Link to={"/create"}>
+              <Button variant="primary">Create</Button>
+            </Link>
+            <Button onClick={handleLogOut}>Logout</Button>
+          </>
+        ) : (
+          <>
+            <div className={styles.navbarAuth}>
+              <Link to={"/login"}>
+                <Button variant="primary">Login</Button>
+              </Link>
+              <Link to={"/register"}>
+                <Button variant="secondary">Register</Button>
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </header>
   );

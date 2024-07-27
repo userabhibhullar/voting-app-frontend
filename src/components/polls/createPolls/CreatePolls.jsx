@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../button/Button";
 import styles from "./CreatePolls.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createPoll } from "../../../store/actions/pollsActions";
 
 const CreatePolls = () => {
-  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(auth);
+    if (!auth._id) {
+      navigate("/login");
+    }
+  }, [auth, navigate]);
+
+  const dispatch = useDispatch();
   const [options, setOptions] = useState(["", ""]);
   const [poll, setPoll] = useState({
     title: "",
@@ -40,9 +49,17 @@ const CreatePolls = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPoll(poll));
+    const newPoll = {
+      ...poll,
+      body: poll.body || null,
+      date: new Date(),
+    };
+    dispatch(createPoll(newPoll));
     return navigate("/");
   };
+
+  if (!auth._id) return null;
+
   return (
     <div className={styles.createContainer}>
       <form className={styles.createForm}>
