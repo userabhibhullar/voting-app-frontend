@@ -16,3 +16,19 @@ export const getPolls = () => {
       });
   };
 };
+
+export const createPoll = (poll) => {
+  return (dispatch) => {
+    axios
+      .post(`${url}/polls`, poll)
+      .then((poll) => {
+        dispatch({
+          type: "CREATE_POLL",
+          poll,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};

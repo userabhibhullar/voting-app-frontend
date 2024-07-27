@@ -4,7 +4,9 @@
 }
 
 .createForm {
-  padding-top: 100px;
+  padding-top: 60px;
+  padding-left: 24px;
+  padding-right: 24px;
   max-width: 1100px;
   width: 100%;
   display: flex;
@@ -22,6 +24,9 @@
   padding: 8px 12px;
   border: 1px solid var(--primary);
   border-radius: 9px;
+  outline: none;
+  font-size: 16px;
+  font-family: var(--ff);
   margin-bottom: 8px;
 }
 
@@ -30,4 +35,24 @@
   border: 1px solid var(--primary);
   border-radius: 9px;
   margin-bottom: 8px;
+  font-family: var(--ff);
+  height: 200px;
+  font-size: 16px;
+  outline: none;
+  resize: none;
+}
+
+.optionCreator {
+  margin-bottom: 8px;
+}
+
+.optionContainer {
+  margin-bottom: 8px;
+}
+
+.createOptionInput {
+  padding: 12px 14px;
+  border-radius: 9px;
+  margin-right: 4px;
+  border: 1px solid var(--primary);
 }
