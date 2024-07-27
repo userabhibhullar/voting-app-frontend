@@ -3,12 +3,19 @@ import Option from "./option/Option";
 import styles from "./Poll.module.css";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deletePoll } from "../../../store/actions/pollsActions";
 
 const Poll = ({ poll, admin }) => {
+  const dispatch = useDispatch();
   const [selected, setSelected] = useState("");
 
   const handleSelect = (e) => {
     setSelected(e.target.value);
+  };
+
+  const handleDeletePoll = (id) => {
+    dispatch(deletePoll(id));
   };
 
   return (
@@ -20,9 +27,12 @@ const Poll = ({ poll, admin }) => {
         </span>
       </span>
       {admin ? (
-        <Link to={`/edit/${poll._id}`} state={poll}>
-          Edit
-        </Link>
+        <>
+          <Link to={`/edit/${poll._id}`} state={poll}>
+            Edit
+          </Link>
+          <a onClick={() => handleDeletePoll(poll._id)}>Delete</a>
+        </>
       ) : (
         ""
       )}

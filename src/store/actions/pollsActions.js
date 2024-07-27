@@ -48,3 +48,19 @@ export const updatePoll = (poll, id) => {
       });
   };
 };
+
+export const deletePoll = (id) => {
+  return (dispatch) => {
+    axios
+      .delete(`${url}/polls/${id}`)
+      .then((poll) => {
+        dispatch({
+          type: "DELETE_POLL",
+          id,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};

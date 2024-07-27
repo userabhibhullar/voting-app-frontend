@@ -12,6 +12,8 @@ const pollsReducer = (state = [], action) => {
           return poll;
         }
       });
+    case "DELETE_POLL":
+      return state.filter((poll) => poll._id !== action.id);
     default:
       return state;
   }
