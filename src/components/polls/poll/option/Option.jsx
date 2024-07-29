@@ -1,14 +1,14 @@
 import styles from "./Option.module.css";
-const Option = ({ id, value, selected, onChange }) => {
+const Option = ({ id, value, selected, onClick }) => {
   return selected ? (
     <div className={styles.option}>
       <input
         className={styles.optionInput}
-        onChange={onChange}
         type="radio"
         name={id}
         id={value}
         value={value}
+        onClick={onClick}
       />
       <label htmlFor={value} className={styles.optionLabelSelected}>
         {value}
@@ -18,11 +18,11 @@ const Option = ({ id, value, selected, onChange }) => {
     <div className={styles.option}>
       <input
         className={styles.optionInput}
-        onChange={onChange}
         type="radio"
         name={id}
         id={value}
         value={value}
+        onClick={onClick}
       />
       <label className={styles.optionLabel} htmlFor={value}>
         {value}

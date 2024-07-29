@@ -14,6 +14,7 @@ const pollsReducer = (state = [], action) => {
       });
     case "DELETE_POLL":
       return state.filter((poll) => poll._id !== action.id);
+    case "DESELECT_POLL":
     case "SELECT_POLL":
       return state.map((poll) => {
         if (poll._id === action.poll.data._id) {

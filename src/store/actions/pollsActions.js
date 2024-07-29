@@ -90,3 +90,19 @@ export const selectPoll = (id, selection) => {
       });
   };
 };
+
+export const deselectPoll = (id, selection) => {
+  return (dispatch) => {
+    axios
+      .patch(`${url}/polls/${id}`, selection, setHeaders())
+      .then((poll) => {
+        dispatch({
+          type: "DESELECT_POLL",
+          poll,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};

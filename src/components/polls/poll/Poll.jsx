@@ -4,7 +4,11 @@ import styles from "./Poll.module.css";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { deletePoll, selectPoll } from "../../../store/actions/pollsActions";
+import {
+  deletePoll,
+  deselectPoll,
+  selectPoll,
+} from "../../../store/actions/pollsActions";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -27,15 +31,36 @@ const Poll = ({ poll }) => {
     dispatch(deletePoll(id));
   };
 
+  // const handleSelection = (e) => {
+  //   if (auth._id) {
+  //     setSelected(e.target.value);
+  //     dispatch(
+  //       selectPoll(poll._id, { uid: auth._id, selection: e.target.value })
+  //     );
+  //   }
+  //   navigate("/login");
+  // };
+
   const handleSelection = (e) => {
     if (auth._id) {
-      setSelected(e.target.value);
-      dispatch(
-        selectPoll(poll._id, { uid: auth._id, selection: e.target.value })
-      );
-      return;
+      if (e.target.value === selected) {
+        setSelected("");
+        const selection = {
+          uid: auth._id,
+          selection: e.target.value,
+        };
+        dispatch(deselectPoll(poll._id, selection));
+        return;
+      } else {
+        setSelected(e.target.value);
+        dispatch(
+          selectPoll(poll._id, { uid: auth._id, selection: e.target.value })
+        );
+        return;
+      }
+    } else {
+      navigate("/");
     }
-    navigate("/login");
   };
 
   return (
@@ -71,7 +96,7 @@ const Poll = ({ poll }) => {
               key={option}
               id={poll._id}
               value={option}
-              onChange={handleSelection}
+              onClick={handleSelection}
               selected={selected === option}
             />
           );
